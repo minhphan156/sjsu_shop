@@ -22,9 +22,12 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
+  console.log("1 at auth action login " + userData.email);
   axios
     .post("/api/users/login", userData)
     .then(res => {
+      console.log("3 at auth action login RES " + res.data.token);
+
       // save to localStorage
       const { token } = res.data;
       // set token to local storage

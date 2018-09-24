@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 // api routes
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
+const product = require("./routes/api/product");
 
 // get some functionalities from express library like get() function
 const app = express();
@@ -27,8 +28,8 @@ const db = require("./config/keys").mongoURI;
 // connect to MongoDB
 mongoose
   .connect(db)
-  .then(() => logger.info("MongoDB Connected")) // if success do this
-  .catch(err => logger.error(`MongoDB error: ${err}`)); // if fail do this
+  .then(() => console.log("MongoDB Connected")) // if success do this
+  .catch(err => console.log(`MongoDB error: ${err}`)); // if fail do this
 
 // Passport middleware
 app.use(passport.initialize());
@@ -41,6 +42,8 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 // this will append to home route 'localHost:5000/api/profile/{what ever profile.js dictate}
 app.use("/api/profile", profile);
+// this will append to home route 'localHost:5000/api/product/{what ever product.js dictate}
+app.use("/api/product", product);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

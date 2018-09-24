@@ -3,14 +3,41 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { submitQuery } from "../../actions/queryActions";
+
 class Navbar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      query: ""
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ query: e.target.value });
+  }
+
+  onClick(e) {
+    //NOTE: we assume user will search for description
+    // 1-submit query as object with to submitQuery at queryActions.js
+    const newQuery = {
+      description: { $regex: this.state.query, $options: "2" }
+      // price: this.state.query,
+      // description: this.state.query
+    };
+    this.props.submitQuery(newQuery);
+  }
+
   onLogoutClick(e) {
     e.preventDefault();
     this.props.logoutUser();
   }
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
@@ -23,7 +50,7 @@ class Navbar extends Component {
             <img
               className="rounded-circle"
               src="https://openclipart.org/download/247319/abstract-user-flat-3.svg"
-              alt={"user image"}
+              alt={"user"}
               style={{ width: "25px", marginRight: "5px" }}
             />
             Logout
@@ -53,6 +80,24 @@ class Navbar extends Component {
           <Link className="navbar-brand" to="/">
             Home
           </Link>
+          <div className="input-group input-group-sm col-6">
+            <input
+              type="text"
+              className="form-control"
+              name="search"
+              value={this.state.query}
+              onChange={this.onChange}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={this.onClick}
+              >
+                Search
+              </button>
+            </div>
+          </div>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
@@ -71,5 +116,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, submitQuery }
 )(Navbar);
