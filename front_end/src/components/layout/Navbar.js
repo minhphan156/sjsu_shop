@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { submitQuery } from "../../actions/queryActions";
 
+import Search from "./Search";
+
 class Navbar extends Component {
   constructor() {
     super();
@@ -24,8 +26,7 @@ class Navbar extends Component {
     //NOTE: we assume user will search for description
     // 1-submit query as object with to submitQuery at queryActions.js
     const newQuery = {
-      //query: this.state.query
-      description: this.state.query
+      name: this.state.query
     };
     this.props.submitQuery(newQuery);
   }
@@ -74,44 +75,51 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Home
-          </Link>
-          <div className="input-group input-group-sm col-6">
-            <input
-              type="text"
-              className="form-control"
-              name="search"
-              value={this.state.query}
-              onChange={this.onChange}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={this.onClick}
-              >
-                Search
-              </button>
+      <div>
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+          <div className="container">
+            <Link className="navbar-brand" to="/">
+              Home
+            </Link>
+            <div className="input-group input-group-sm col-6">
+              <input
+                type="text"
+                className="form-control"
+                name="search"
+                value={this.state.query}
+                onChange={this.onChange}
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={this.onClick}
+                >
+                  Search
+                </button>
+              </div>
             </div>
+            {isAuthenticated ? authLinks : guestLinks}
           </div>
-          {isAuthenticated ? authLinks : guestLinks}
-        </div>
-      </nav>
+        </nav>
+        {this.props.query.productQuery ? (
+          <Search query={this.props.query} />
+        ) : null}
+      </div>
     );
   }
 }
-
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  query: state.query
 });
+// this.props.query = { productQuery : data}
+// if this.props.query is empty we will not show the Search page
 
 export default connect(
   mapStateToProps,

@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const productSchema = new Schema({
-  brand: {
+  name: {
     type: String,
     required: true
   },
   price: {
-    type: String,
+    type: Number,
     required: true
   },
   image: {

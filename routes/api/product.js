@@ -15,7 +15,7 @@ router.get("/search/", (req, res) => {
   // search/?string <-we use-> req.query
   // search/:string <-we use-> req.params
 
-  Product.findOne({ description: req.query.description })
+  Product.findOne({ name: req.query.name })
     .then(product => {
       if (!product) {
         // if product not found
@@ -25,7 +25,7 @@ router.get("/search/", (req, res) => {
 
       res.json({
         image: product.image,
-        brand: product.brand,
+        name: product.name,
         price: product.price,
         description: product.description
       });
@@ -34,6 +34,34 @@ router.get("/search/", (req, res) => {
       console.error(err);
     });
 });
+
+//   var keyword = req.query.name.split(" ");
+//   var productArray = [];
+
+//   keyword.forEach(function(el) {
+//     Product.findOne({ name: /el/i })
+//       .then(product => {
+//         if (!product) {
+//           // if product not found
+//           errors = { query: "product not found" };
+//           return res.status(404).json(errors);
+//         }
+//         if (productArray.indexOf(product) < 0) {
+//           productArray.push(product);
+//         }
+//       })
+//       .catch(err => {
+//         console.error(err);
+//       });
+//   });
+
+//   res.json({
+//     image: productArray[0].image,
+//     name: productArray[0].name,
+//     price: productArray[0].price,
+//     description: productArray[0].description
+//   });
+// });
 
 // export so server.js can use this
 module.exports = router;
