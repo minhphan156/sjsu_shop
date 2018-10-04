@@ -8,10 +8,14 @@ const Product = require("../../models/Product");
 // @route GET api/product/search
 // @desc Register user
 // @access Public
-router.post("/search", (req, res) => {
+// router.get("/search/:description", (req, res) => {
+router.get("/search/", (req, res) => {
   // 3-receive req to query from submitQuery at /actions/queryActions.js
-  // req.body = newQuery
-  Product.findOne(req.body)
+  //NOTE:
+  // search/?string <-we use-> req.query
+  // search/:string <-we use-> req.params
+
+  Product.findOne({ description: req.query.description })
     .then(product => {
       if (!product) {
         // if product not found
@@ -20,6 +24,7 @@ router.post("/search", (req, res) => {
       }
 
       res.json({
+        image: product.image,
         brand: product.brand,
         price: product.price,
         description: product.description

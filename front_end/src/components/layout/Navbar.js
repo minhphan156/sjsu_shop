@@ -24,9 +24,8 @@ class Navbar extends Component {
     //NOTE: we assume user will search for description
     // 1-submit query as object with to submitQuery at queryActions.js
     const newQuery = {
-      description: { $regex: this.state.query, $options: "2" }
-      // price: this.state.query,
-      // description: this.state.query
+      //query: this.state.query
+      description: this.state.query
     };
     this.props.submitQuery(newQuery);
   }

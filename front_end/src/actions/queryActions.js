@@ -4,8 +4,14 @@ import axios from "axios";
 // newQuery = {description : someString }
 export const submitQuery = newQuery => dispatch => {
   axios
-    .post("/api/product/search", newQuery)
+    .get("/api/product/search/", { params: newQuery })
+    ///api/product/search/?description=searchString
     // 4-if success then res.data will be the product object we looking for
-    .then(res => console.log("at action now :" + JSON.stringify(res.data)))
+    .then(res =>
+      dispatch({
+        type: SET_QUERY,
+        payload: res.data
+      })
+    )
     .catch(err => console.log(err));
 };
