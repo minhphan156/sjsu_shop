@@ -3,21 +3,28 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
 class Search extends Component {
-  componentDidMount = () => {
-    // during logged in , if we change url to Search/home it will redirect to homepage
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "dsd"
+    };
+  }
 
   render() {
+    const query = this.props.query.productQuery;
+    this.setState = {
+      query: query
+    };
+    // console.log("at search now +query+ " + query);
+    // console.log("at search now+this.state.query+ " + this.state.query);
+
     return (
       <div className="landing">
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                {this.props.query.productQuery ? ( // if no product query show nothing
+                {this.state.query ? ( // if no product query show nothing
                   <div className="col-2">
                     <div className="card bg-light text-dark">
                       <div className="card-header d-flex align-items-center justify-content-center h-100">
@@ -47,12 +54,4 @@ class Search extends Component {
   }
 }
 
-Search.propTypes = {
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps)(Search);
+export default Search;

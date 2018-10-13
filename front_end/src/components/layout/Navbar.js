@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { submitQuery } from "../../actions/queryActions";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Search from "./Search";
 
@@ -23,7 +24,7 @@ class Navbar extends Component {
   }
 
   onClick(e) {
-    //NOTE: we assume user will search for description
+    //NOTE: we assume user will search for name
     // 1-submit query as object with to submitQuery at queryActions.js
     const newQuery = {
       name: this.state.query
@@ -90,13 +91,15 @@ class Navbar extends Component {
                 onChange={this.onChange}
               />
               <div className="input-group-append">
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  onClick={this.onClick}
-                >
-                  Search
-                </button>
+                <Link className="navbar-brand" to="/Search">
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={this.onClick}
+                  >
+                    Search
+                  </button>
+                </Link>
               </div>
             </div>
             {isAuthenticated ? authLinks : guestLinks}
