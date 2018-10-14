@@ -58,10 +58,195 @@ img {
   font-size: 20px;
   color: white;
   padding: auto;
-  background-color: #343A40;
+  background-color: #343a40;
 }
 
 .lobster-font {
   font-family: Lobster, Serif;
-  color: #343A40;
+  color: #343a40;
+}
+
+img {
+  width: 100%;
+}
+
+.landing {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+/** Category page **/
+
+.category-tile {
+  padding: 50px 0px 0px 0px;
+  margin: 15px;
+  height: 250px;
+  text-align: center;
+}
+
+.category-img {
+  display: block;
+  margin: auto;
+  height: 75%;
+  width: 75%;
+  max-width: 125px;
+  max-height: 125px;
+}
+
+.category-text {
+  font-family: Lobster, Serif;
+  font-size: 20px;
+  color: white;
+  padding: auto;
+  background-color: #343a40;
+}
+
+.lobster-font {
+  font-family: Lobster, Serif;
+  color: #343a40;
+}
+
+/** Product Tile/Bar **/
+
+.product-bar {
+  display: flex;
+  height: 12vh;
+  min-height: 100px;
+  max-height: 125px;
+  padding: 0;
+  background-color: #e8ebea;
+}
+
+.product-bar-img {
+  align-self: center;
+  height: 90%;
+  min-height: auto;
+  width: 25%;
+  max-width: 150px;
+}
+
+.product-bar-info {
+  align-self: center;
+  height: auto;
+  line-height: 15px;
+  padding: 0;
+  padding-left: 5px;
+  width: 65%;
+}
+
+.product-bar-desc-name {
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 1px;
+}
+
+.product-bar-desc-price {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.product-bar-desc-category {
+  display: block;
+  font-size: 13px;
+  margin: 0;
+  margin-top: 5px;
+  font-style: italic;
+  width: auto;
+}
+
+.product-bar-desc-text {
+  display: block;
+  font-size: 12px;
+  margin: 0;
+  margin-top: 2px;
+  width: auto;
+}
+
+.product-bar-btn {
+  align-self: center;
+  height: 40px;
+  width: 10%;
+  padding: 0;
+}
+
+/* Product Card */
+
+.product-card {
+  height: 25vh;
+}
+
+.product-card-img {
+  height: 75%;
+  width: 100%;
+}
+
+.product-card-info {
+  display: flex;
+  height: 25%;
+  width: 100%;
+}
+
+.product-card-info-left {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-info-name {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.product-card-info-right {
+  width: 50%;
+}
+
+.product-card-info-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background-color: #343a40;
+  color: white;
+}
+
+/** Recipe Page **/
+
+.recipe-title {
+  text-align: center;
 }
