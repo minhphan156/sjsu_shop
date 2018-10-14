@@ -34,21 +34,15 @@ class Search extends Component {
         //   </div>
         // );
 
-        // return (
-        //   <ProductBar
-        //     productKey={item._id}
-        //     productImage={item.image}
-        //     productName={item.name}
-        //     productPrice={item.price}
-        //     productCategory={item.category}
-        //     productDescription={item.description}
-        //   />
-        // );
-
         return (
-          <div className="col-md-3">
-            <ProductCard />
-          </div>
+          <ProductBar
+            productKey={item._id}
+            productImage={item.image}
+            productName={item.name}
+            productPrice={item.price}
+            productCategory={item.category}
+            productDescription={item.description}
+          />
         );
       });
 
