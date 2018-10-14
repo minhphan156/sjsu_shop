@@ -75,6 +75,39 @@ class Navbar extends Component {
       </ul>
     );
 
+    // return (
+    //   <div>
+    //     <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+    //       <div className="container">
+    //         <Link className="navbar-brand" to="/">
+    //           Home
+    //         </Link>
+    //         <div className="input-group input-group-sm col-6">
+    //           <input
+    //             type="text"
+    //             className="form-control"
+    //             name="search"
+    //             value={this.state.query}
+    //             onChange={this.onChange}
+    //           />
+    //           <div className="input-group-append">
+    //             <Link className="navbar-brand" to="/Search">
+    //               <button
+    //                 className="btn btn-outline-secondary"
+    //                 type="button"
+    //                 onClick={this.onClick}
+    //               >
+    //                 Search
+    //               </button>
+    //             </Link>
+    //           </div>
+    //         </div>
+    //         {isAuthenticated ? authLinks : guestLinks}
+    //       </div>
+    //     </nav>
+    //   </div>
+    // );
+
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -84,6 +117,7 @@ class Navbar extends Component {
             </Link>
             <div className="input-group input-group-sm col-6">
               <input
+                style={{ height: 36 }}
                 type="text"
                 className="form-control"
                 name="search"
@@ -91,7 +125,7 @@ class Navbar extends Component {
                 onChange={this.onChange}
               />
               <div className="input-group-append">
-                <Link className="navbar-brand" to="/Search">
+                <Link to="/Search">
                   <button
                     className="btn btn-outline-secondary"
                     type="button"
@@ -105,9 +139,6 @@ class Navbar extends Component {
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </nav>
-        {/* {this.props.query.productQuery ? (
-          <Search query={this.props.query} />
-        ) : null} */}
       </div>
     );
   }

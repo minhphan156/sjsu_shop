@@ -9,7 +9,7 @@ class Search extends Component {
     if (query != null) {
       const itemsList = query.map(item => {
         return (
-          <div className="col-2">
+          <div className="col-2" key={item._id}>
             <div className="card bg-light text-dark">
               <div className="card-header d-flex align-items-center justify-content-center h-100">
                 <img
@@ -54,7 +54,7 @@ const flexContainer = {
   display: "flex",
   flex: 1,
   flexDirection: "row",
-  justifyContent: "space-between"
+  flexWrap: "wrap"
 };
 
 const mapStateToProps = state => ({
