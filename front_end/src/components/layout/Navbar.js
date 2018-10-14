@@ -45,12 +45,6 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          {/* <img
-            className="rounded-circle"
-            src="https://openclipart.org/download/247319/abstract-user-flat-3.svg"
-            alt={"user image"}
-            style={{ width: "15px", marginRight: "5px" }}
-          /> */}
           <Link className="nav-link" to="/dashboard">
             {user.name}
           </Link>
@@ -88,39 +82,6 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-
-    // return (
-    //   <div>
-    //     <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-    //       <div className="container">
-    //         <Link className="navbar-brand" to="/">
-    //           Home
-    //         </Link>
-    //         <div className="input-group input-group-sm col-6">
-    //           <input
-    //             type="text"
-    //             className="form-control"
-    //             name="search"
-    //             value={this.state.query}
-    //             onChange={this.onChange}
-    //           />
-    //           <div className="input-group-append">
-    //             <Link className="navbar-brand" to="/Search">
-    //               <button
-    //                 className="btn btn-outline-secondary"
-    //                 type="button"
-    //                 onClick={this.onClick}
-    //               >
-    //                 Search
-    //               </button>
-    //             </Link>
-    //           </div>
-    //         </div>
-    //         {isAuthenticated ? authLinks : guestLinks}
-    //       </div>
-    //     </nav>
-    //   </div>
-    // );
 
     return (
       <div>
