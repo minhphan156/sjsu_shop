@@ -19,6 +19,22 @@ const productSchema = new Schema({
   description: {
     type: String,
     required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  brand: {
+    type: String,
+    required: true
+  },
+  tag: {
+    type: Array,
+    required: true
+  },
+  related: {
+    type: Number,
+    required: true
   }
 });
 
