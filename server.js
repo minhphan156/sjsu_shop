@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const logger = require("winston");
 
 // use to connect with mongoDB
 const mongoose = require("mongoose");
@@ -27,9 +28,12 @@ const db = require("./config/keys").mongoURI;
 
 // connect to MongoDB
 mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB Connected")) // if success do this
-  .catch(err => console.log(`MongoDB error: ${err}`)); // if fail do this
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => logger.info("MongoDB Connected")) // if success do this
+  .catch(err => logger.error(`MongoDB error: ${err}`)); // if fail do this
 
 // Passport middleware
 app.use(passport.initialize());

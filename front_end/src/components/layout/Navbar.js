@@ -7,6 +7,7 @@ import { submitQuery } from "../../actions/queryActions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Search from "./Search";
+import { clearCurrentProfile } from "../../actions/profileActions";
 
 class Navbar extends Component {
   constructor() {
@@ -34,14 +35,27 @@ class Navbar extends Component {
 
   onLogoutClick(e) {
     e.preventDefault();
+    this.props.clearCurrentProfile();
     this.props.logoutUser();
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          {/* <img
+            className="rounded-circle"
+            src="https://openclipart.org/download/247319/abstract-user-flat-3.svg"
+            alt={"user image"}
+            style={{ width: "15px", marginRight: "5px" }}
+          /> */}
+          <Link className="nav-link" to="/dashboard">
+            {user.name}
+          </Link>
+        </li>
+
         <li className="nav-item">
           <a
             href="#"
@@ -115,6 +129,12 @@ class Navbar extends Component {
             <Link className="navbar-brand" to="/">
               Home
             </Link>
+            <Link className="navbar-brand" to="/categories">
+              Categories
+            </Link>
+            <Link to="/cart" className="btn btn-light">
+              <i className="fas fa-shopping-cart text-info mr-1" />
+            </Link>
             <div className="input-group input-group-sm col-6">
               <input
                 style={{ height: 36 }}
@@ -136,6 +156,7 @@ class Navbar extends Component {
                 </Link>
               </div>
             </div>
+
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </nav>
@@ -157,5 +178,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser, submitQuery }
+  { logoutUser, submitQuery, clearCurrentProfile }
 )(Navbar);
