@@ -105,9 +105,9 @@ class Navbar extends Component {
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </nav>
-        {this.props.query.productQuery ? (
+        {/* {this.props.query.productQuery ? (
           <Search query={this.props.query} />
-        ) : null}
+        ) : null} */}
       </div>
     );
   }

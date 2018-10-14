@@ -7,11 +7,11 @@ export const submitQuery = newQuery => dispatch => {
     .get("/api/product/search/", { params: newQuery })
     ///api/product/search/?description=searchString
     // 4-if success then res.data will be the product object we looking for
-    .then(res =>
+    .then(res => {
       dispatch({
         type: SET_QUERY,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err => console.log(err));
 };

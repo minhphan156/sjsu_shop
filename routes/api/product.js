@@ -14,54 +14,22 @@ router.get("/search/", (req, res) => {
   //NOTE:
   // search/?string <-we use-> req.query
   // search/:string <-we use-> req.params
+  const regex = new RegExp(req.query.name, "i"); // find part of string which include lower and upper case
 
-  Product.findOne({ name: req.query.name })
+  // find return [ ]
+  Product.find({ name: regex })
     .then(product => {
       if (!product) {
         // if product not found
         errors = { query: "product not found" };
         return res.status(404).json(errors);
       }
-
-      res.json({
-        image: product.image,
-        name: product.name,
-        price: product.price,
-        description: product.description
-      });
+      res.send(product);
     })
     .catch(err => {
       console.error(err);
     });
 });
-
-//   var keyword = req.query.name.split(" ");
-//   var productArray = [];
-
-//   keyword.forEach(function(el) {
-//     Product.findOne({ name: /el/i })
-//       .then(product => {
-//         if (!product) {
-//           // if product not found
-//           errors = { query: "product not found" };
-//           return res.status(404).json(errors);
-//         }
-//         if (productArray.indexOf(product) < 0) {
-//           productArray.push(product);
-//         }
-//       })
-//       .catch(err => {
-//         console.error(err);
-//       });
-//   });
-
-//   res.json({
-//     image: productArray[0].image,
-//     name: productArray[0].name,
-//     price: productArray[0].price,
-//     description: productArray[0].description
-//   });
-// });
 
 // export so server.js can use this
 module.exports = router;
