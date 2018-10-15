@@ -15,6 +15,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Search from "./components/layout/Search";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
@@ -52,6 +53,8 @@ class App extends Component {
           <div className="App">
             <NavBar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/Search" component={Search} />
+
             <div className="container">
               <Route exact path="/categories" component={BrowseByCategory} />
               <Route exact path="/register" component={Register} />
