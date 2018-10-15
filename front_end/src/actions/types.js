@@ -8,3 +8,5 @@ export const PROFILE_LOADING = "PROFILE_LOADING";
 export const PROFILE_NOT_FOUND = "PROFILE_NOT_FOUND";
 export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE"; // clear profile after logging out
 export const GET_PROFILES = "GET_PROFILES";
+
+export const GET_CATEGORY = "GET_CATEGORY";

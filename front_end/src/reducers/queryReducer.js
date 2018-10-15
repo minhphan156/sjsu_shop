@@ -8,6 +8,8 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_QUERY:
+      console.log("5 - queryREDUCER " + JSON.stringify(action.payload));
+
       return {
         ...state,
         productQuery: action.payload

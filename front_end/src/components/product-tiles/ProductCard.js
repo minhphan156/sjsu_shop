@@ -7,7 +7,7 @@ import React, { Component } from "react";
 class ProductCard extends Component {
   render() {
     return (
-      <div key={this.props.productKey}>
+      <div key={this.props.productKey} style={{ marginBottom: 10 }}>
         <div className="container product-card border p-0">
           <img
             src={this.props.productImage}
@@ -22,8 +22,8 @@ class ProductCard extends Component {
             </div>
             <div className="product-card-info-right border-left border-top text-truncate p-2 m-0">
               <button type="button" className="btn product-card-info-btn">
-                <i className="fas fa-cart-plus" /> {this.props.productPrice}{" "}
-                cents
+                <i className="fas fa-cart-plus" /> $
+                {this.props.productPrice / 100}
               </button>
             </div>
           </div>
