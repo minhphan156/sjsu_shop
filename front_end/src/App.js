@@ -15,10 +15,14 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Search from "./components/layout/Search";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import BrowseByCategory from "./components/browse/BrowseByCategory";
+import ProductDetail from "./components/product/ProductDetail";
+import NotFound from "./components/layout/NotFound";
+import ShoppingCart from "./components/cart/ShoppingCart";
 
 import "./App.css";
 
@@ -52,10 +56,15 @@ class App extends Component {
           <div className="App">
             <NavBar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/cart" component={ShoppingCart} />
+            <Route exact path="/Search" component={Search} />
+
             <div className="container">
               <Route exact path="/categories" component={BrowseByCategory} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/product/:productname" component={ProductDetail} />
+              <Route exact path="/not-found/:attempt" component={NotFound}/>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
