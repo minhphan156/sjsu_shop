@@ -335,6 +335,11 @@ img {
   background-color: #64af3d;
 }
 
+/*Shopping Cart*/
+.product-in-cart {
+  text-align: center;
+}
+
 /* Responsive */
 @media (max-width: 940px) {
   .container {

@@ -22,6 +22,7 @@ import EditProfile from "./components/edit-profile/EditProfile";
 import BrowseByCategory from "./components/browse/BrowseByCategory";
 import ProductDetail from "./components/product/ProductDetail";
 import NotFound from "./components/layout/NotFound";
+import ShoppingCart from "./components/cart/ShoppingCart";
 
 import "./App.css";
 
@@ -55,6 +56,7 @@ class App extends Component {
           <div className="App">
             <NavBar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/cart" component={ShoppingCart} />
             <Route exact path="/Search" component={Search} />
 
             <div className="container">
