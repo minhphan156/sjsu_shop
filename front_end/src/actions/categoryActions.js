@@ -1,21 +1,18 @@
-import { SET_QUERY } from "./types";
+import { GET_CATEGORY } from "./types";
 import axios from "axios";
 // 2-do post request at routes/product.js with newQuery object
-// newQuery = {description : someString }
-export const submitQuery = newQuery => dispatch => {
-  console.log("2 - INSIDE queryAction.js " + JSON.stringify(newQuery));
-
+export const submitCategory = newCategory => dispatch => {
+  console.log("2 - INSIDE categoryAction.js " + newCategory.category);
   axios
-    .get("/api/product/search/", { params: newQuery })
+    .get("/api/product/category/", { params: newCategory })
     ///api/product/search/?description=searchString
     // 4-if success then res.data will be the product object we looking for
     .then(res => {
       console.log(
-        "4 - INSIDE response queryAction.js " + JSON.stringify(res.data)
+        "4 - INSIDE response categoryAction.js " + JSON.stringify(res.data)
       );
-
       dispatch({
-        type: SET_QUERY,
+        type: GET_CATEGORY,
         payload: res.data
       });
     })

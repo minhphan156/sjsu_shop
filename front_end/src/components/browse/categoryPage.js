@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import ProductBar from "../product-tiles/ProductBar";
 import ProductCard from "../product-tiles/ProductCard";
 
-class Search extends Component {
+class categoryPage extends Component {
   render() {
-    const query = this.props.query.productQuery;
+    const category = this.props.category.productCategory;
 
-    if (query != null) {
-      const itemsList = query.map(item => {
+    if (category != null) {
+      const itemsList = category.map(item => {
         return (
           <div className="col-md-2" key={item._id}>
             <ProductCard
@@ -34,12 +34,12 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => ({
-  query: state.query
+  category: state.category
 });
-// this.props.query = { productQuery : data}
-// if this.props.query is empty we will not show the Search page
+// this.props.category = { productcategory : data}
+// if this.props.category is empty we will not show the categoryPage page
 
 export default connect(
   mapStateToProps,
   {}
-)(Search);
+)(categoryPage);
