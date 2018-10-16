@@ -9,7 +9,7 @@ class ProductCard extends Component {
     return (
       <div
         key={this.props.productKey}
-        class="container card border-light p-0"
+        className="container card border-light p-0"
         style={{ width: 120, marginBottom: 10 }}
       >
         <div style={{ height: 170 }}>
@@ -20,7 +20,7 @@ class ProductCard extends Component {
           />
         </div>
         <div style={{ height: 130 }}>
-          <h5 class="card-title">{this.props.productName}</h5>
+          <h5 className="card-title">{this.props.productName}</h5>
         </div>
         <button type="button" className="btn product-card-info-btn">
           <i className="fas fa-cart-plus" /> ${this.props.productPrice / 100}

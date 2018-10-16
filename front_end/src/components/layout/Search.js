@@ -11,7 +11,7 @@ class Search extends Component {
     if (query != null) {
       const itemsList = query.map(item => {
         return (
-          <div className="col-md-2">
+          <div className="col-md-2" key={item._id}>
             <ProductCard
               productKey={item._id}
               productImage={item.image}
