@@ -61,6 +61,7 @@ class App extends Component {
             <Route exact path="/Alcohol" component={categoryPage} />
             <Route exact path="/Dairy" component={categoryPage} />
             <Route exact path="/Meat" component={categoryPage} />
+            <Route exact path="/Bakery" component={categoryPage} />
 
             <div className="container">
               <Route exact path="/categories" component={BrowseByCategory} />

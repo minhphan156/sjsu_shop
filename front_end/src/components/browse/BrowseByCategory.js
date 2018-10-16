@@ -81,14 +81,20 @@ class BrowseByCategory extends Component {
         </div>
         <div className="row justify-content-md-center">
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/categories">
+            <Link to="/Bakery">
               <img
                 src="category-imgs/Bakery_c.png"
                 className="category-img"
                 alt="Bakery.img"
               />
               <br />
-              <div className="category-text">Bakery</div>
+              <button
+                className="category-text"
+                type="button"
+                onClick={() => this.onClick("bakery")}
+              >
+                Bakery
+              </button>
             </Link>
           </div>
           <div className="col-sm-2 border category-tile shadow">

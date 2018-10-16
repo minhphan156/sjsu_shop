@@ -7,27 +7,24 @@ import React, { Component } from "react";
 class ProductCard extends Component {
   render() {
     return (
-      <div key={this.props.productKey} style={{ marginBottom: 10 }}>
-        <div className="container product-card border p-0">
+      <div
+        key={this.props.productKey}
+        class="container card border-light p-0"
+        style={{ width: 120, marginBottom: 10 }}
+      >
+        <div style={{ height: 170 }}>
           <img
             src={this.props.productImage}
             alt="test-img"
             className="product-card-img"
           />
-          <div className="product-card-info">
-            <div className="product-card-info-left border-right border-top text-truncate p-0 m-0">
-              <p className="product-card-info-name m-0">
-                {this.props.productName}
-              </p>
-            </div>
-            <div className="product-card-info-right border-left border-top text-truncate p-2 m-0">
-              <button type="button" className="btn product-card-info-btn">
-                <i className="fas fa-cart-plus" /> $
-                {this.props.productPrice / 100}
-              </button>
-            </div>
-          </div>
         </div>
+        <div style={{ height: 130 }}>
+          <h5 class="card-title">{this.props.productName}</h5>
+        </div>
+        <button type="button" className="btn product-card-info-btn">
+          <i className="fas fa-cart-plus" /> ${this.props.productPrice / 100}
+        </button>
       </div>
     );
   }
