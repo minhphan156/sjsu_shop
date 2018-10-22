@@ -28,7 +28,7 @@ class BrowseByCategory extends Component {
         </div>
         <div className="row justify-content-md-center">
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Snack">
+            <Link to="/Snack" onClick={() => this.onClick("snack")}>
               <img
                 src="category-imgs/Snacks_c.png"
                 className="category-img"
@@ -38,14 +38,13 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("snack")}
               >
                 Snack
               </button>
             </Link>
           </div>
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Drink">
+            <Link to="/Drink" onClick={() => this.onClick("drink")}>
               <img
                 src="category-imgs/Drinks_c.png"
                 className="category-img"
@@ -55,14 +54,13 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("drink")}
               >
                 Drink
               </button>
             </Link>
           </div>
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Alcohol">
+            <Link to="/Alcohol" onClick={() => this.onClick("alcohol")}>
               <img
                 src="category-imgs/Alcohol_c.png"
                 className="category-img"
@@ -72,7 +70,6 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("alcohol")}
               >
                 Alcohol
               </button>
@@ -81,7 +78,7 @@ class BrowseByCategory extends Component {
         </div>
         <div className="row justify-content-md-center">
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Bakery">
+            <Link to="/Bakery" onClick={() => this.onClick("bakery")}>
               <img
                 src="category-imgs/Bakery_c.png"
                 className="category-img"
@@ -91,14 +88,13 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("bakery")}
               >
                 Bakery
               </button>
             </Link>
           </div>
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Dairy">
+            <Link to="/Dairy" onClick={() => this.onClick("dairy")}>
               <img
                 src="category-imgs/Dairy_c.png"
                 className="category-img"
@@ -108,14 +104,13 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("dairy")}
               >
                 Diary
               </button>
             </Link>
           </div>
           <div className="col-sm-2 border category-tile shadow">
-            <Link to="/Meat">
+            <Link to="/Meat" onClick={() => this.onClick("meat")}>
               <img
                 src="category-imgs/Meats_c.png"
                 className="category-img"
@@ -125,7 +120,6 @@ class BrowseByCategory extends Component {
               <button
                 className="category-text"
                 type="button"
-                onClick={() => this.onClick("meat")}
               >
                 Meat
               </button>

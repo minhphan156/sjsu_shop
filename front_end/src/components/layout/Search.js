@@ -28,8 +28,19 @@ class Search extends Component {
         </div>
       );
     }
+    else {
+      return(
+      <div className="container">
+        <div className="row"><h4 className="lead">Sorry we couldn't find an item for that query, please widen your search.</h4></div>
+      </div>
+      );
+    }
 
-    return <div />;
+    return (
+      <div className="container">
+        <div className="row"/>
+      </div>
+    );;
   }
 }
 
