@@ -1,8 +1,18 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
-// authReducer = { new initialState }
+import queryReducer from "./queryReducer";
+import profileReducer from "./profileReducer";
+import categoryReducer from "./categoryReducer";
+import productReducer from "./productReducer";
+import cartReducer from "./cartReducer";
+
 export default combineReducers({
   auth: authReducer,
-  errors: errorReducer
+  errors: errorReducer,
+  query: queryReducer,
+  profile: profileReducer,
+  category: categoryReducer,
+  product: productReducer,
+  cart: cartReducer
 });

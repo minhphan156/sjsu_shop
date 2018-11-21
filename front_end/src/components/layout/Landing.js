@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import shopLogo from "../common/transparent_logo.png";
 
 class Landing extends Component {
   componentDidMount = () => {
@@ -17,8 +18,9 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Spartanstop</h1>
-                <p>One stop for your combat's need</p>
+                <img className="shop-logo" src={shopLogo} alt="" />
+                <h1 className="display-3 mb-4">SpartanStop</h1>
+                <p>One Grocery Store for all of SJSU</p>
                 <hr />
               </div>
             </div>
