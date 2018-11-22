@@ -5,7 +5,8 @@ import {
   GET_RECIPES,
   RECIPE_LOADING,
   ADD_LIKE,
-  REMOVE_LIKE
+  REMOVE_LIKE,
+  GET_RECIPE_QUERY
 } from "./types";
 
 // Get a specific recipe by ID
@@ -95,4 +96,22 @@ export const addRecipe = (recipeData, history) => dispatch => {
     .post("/api/recipes/create", recipeData)
     .then(res => history.push("/MyRecipe"))
     .catch(err => console.log("error at recipe action " + err));
+};
+
+// Get Recipe Product Query
+export const getRecipeProductQuery = criteria => dispatch => {
+  axios
+    .get("/api/product/search", { params: criteria })
+    .then(res => {
+      dispatch({
+        type: GET_RECIPE_QUERY,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_RECIPE_QUERY,
+        payload: null
+      });
+    });
 };

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { addRecipe } from "../../actions/recipeActions";
+import { addRecipe, getRecipeProductQuery } from "../../actions/recipeActions";
 import { withRouter } from "react-router-dom";
+import Spinner from "../common/Spinner";
 
 /**
  * Main component for the 'Create Recipe' page.
@@ -231,6 +232,7 @@ class CreateRecipe extends Component {
           <input type="submit" value="Submit" className="btn btn-success" />
         </form>
         <br />
+        <ProductModal query={this.props.recipe.productQuery} />
       </div>
     );
   }
@@ -269,7 +271,12 @@ const StepComponent = props => {
 const IngredientBoxComponent = props => {
   return (
     <div className="btn-group d-flex m-1" role="group">
-      <button type="button" className="btn border-right">
+      <button
+        type="button"
+        className="btn border-right"
+        data-toggle="modal"
+        data-target="#ProductModal"
+      >
         {props.ingred}
       </button>
       <button
@@ -286,8 +293,66 @@ const IngredientBoxComponent = props => {
   );
 };
 
+const ProductModal = props => {
+  let queryContent = <div />;
+  if (props.query) {
+    queryContent = (
+      <div className="modal fade" id="ProductModal" tabIndex="-1" role="dialog">
+        <div className="modal-dialog modal-lg" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h3 className="modal-title">
+                What Products Do You Suggest for This Ingredient?
+              </h3>
+              <button type="button" className="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="container" />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Select Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return queryContent;
+};
+
+const RecipeProductCard = props => {
+  return (
+    <div>
+      <div className="border shadow m-0 p-0">
+        <img src={props.img} className="img-fluid" />
+        <div>
+          <span className="d-block text-center m-0 p-1">{props.name}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 CreateRecipe.propTypes = {
   addRecipe: PropTypes.func.isRequired,
+  getRecipeProductQuery: PropTypes.func.isRequired,
+  recipe: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -300,5 +365,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addRecipe }
+  { addRecipe, getRecipeProductQuery }
 )(withRouter(CreateRecipe));

@@ -27,6 +27,7 @@ export const GET_RECIPES = "GET_RECIPES";
 export const RECIPE_LOADING = "RECIPE_LOADING";
 export const ADD_LIKE = "ADD_LIKE";
 export const REMOVE_LIKE = "REMOVE_LIKE";
+export const GET_RECIPE_QUERY = "GET_RECIPE_QUERY";
 
 export const DISCOUNT = "DISCOUNT";
 export const ADD_ITEM_HISTORY = "ADD_ITEM_HISTORY";

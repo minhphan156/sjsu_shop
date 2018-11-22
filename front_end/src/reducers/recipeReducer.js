@@ -3,12 +3,14 @@ import {
   RECIPE_LOADING,
   GET_RECIPE,
   ADD_LIKE,
-  REMOVE_LIKE
+  REMOVE_LIKE,
+  GET_RECIPE_QUERY
 } from "../actions/types";
 
 const initialState = {
   recipes: [],
   recipe: {},
+  productQuery: [],
   loading: false
 };
 
@@ -41,6 +43,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         recipe: action.payload,
+        loading: false
+      };
+    case GET_RECIPE_QUERY:
+      return {
+        ...state,
+        productQuery: action.payload,
         loading: false
       };
     default:
