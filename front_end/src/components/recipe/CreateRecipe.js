@@ -142,6 +142,7 @@ class CreateRecipe extends Component {
       <IngredientBoxComponent
         ingred={ingredient}
         removeIngredient={this.removeIngredient}
+        getRecipeProductQuery={this.props.getRecipeProductQuery}
       />
     ));
 
@@ -232,7 +233,10 @@ class CreateRecipe extends Component {
           <input type="submit" value="Submit" className="btn btn-success" />
         </form>
         <br />
-        <ProductModal query={this.props.recipe.productQuery} />
+        <ProductModal
+          query={this.props.recipe.productQuery}
+          loading={this.props.recipe.loading}
+        />
       </div>
     );
   }
@@ -276,6 +280,16 @@ const IngredientBoxComponent = props => {
         className="btn border-right"
         data-toggle="modal"
         data-target="#ProductModal"
+        onClick={event => {
+          event.preventDefault();
+
+          // search api takes an object for some reason
+          const newQuery = {
+            name: props.ingred
+          };
+
+          props.getRecipeProductQuery(newQuery);
+        }}
       >
         {props.ingred}
       </button>
@@ -293,57 +307,87 @@ const IngredientBoxComponent = props => {
   );
 };
 
+/**
+ * Functional component for the modal used to display available products for chosen ingredients
+ * @param {*} props 
+ */
 const ProductModal = props => {
   let queryContent = <div />;
-  if (props.query) {
+  if (props.loading) {
     queryContent = (
-      <div className="modal fade" id="ProductModal" tabIndex="-1" role="dialog">
-        <div className="modal-dialog modal-lg" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3 className="modal-title">
-                What Products Do You Suggest for This Ingredient?
-              </h3>
-              <button type="button" className="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
+      <div>
+        <Spinner />
+      </div>
+    );
+  } else if (props.query.length === 0) {
+    queryContent = (
+      <div>
+        <h4 className="text-center Roboto">
+          Sorry, we don't have any products for this ingredient
+        </h4>
+      </div>
+    );
+  } else {
+    queryContent = props.query.map(product => (
+      <div className="col-md-4 my-2">
+        <RecipeProductCard
+          key={product._id}
+          img={product.image}
+          name={product.name}
+        />
+      </div>
+    ));
+  }
+
+  return (
+    <div className="modal fade" id="ProductModal" tabIndex="-1" role="dialog">
+      <div className="modal-dialog modal-lg" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3 className="modal-title mx-auto">
+              What Products Do You Suggest for This Ingredient?
+            </h3>
+            <button type="button" className="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div className="modal-body">
+            <div className="container m-0 p-0">
+              <div className="row justify-content-center m-0 p-0">
+                {queryContent}
+              </div>
             </div>
-            <div className="modal-body">
-              <div className="container" />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-dismiss="modal"
-              >
-                Select Product
-              </button>
-            </div>
+          </div>
+          <div className="modal-footer">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Select Product
+            </button>
           </div>
         </div>
       </div>
-    );
-  }
-
-  return queryContent;
+    </div>
+  );
 };
 
 const RecipeProductCard = props => {
   return (
-    <div>
-      <div className="border shadow m-0 p-0">
-        <img src={props.img} className="img-fluid" />
-        <div>
-          <span className="d-block text-center m-0 p-1">{props.name}</span>
-        </div>
+    <div className="border shadow m-0 p-0">
+      <img src={props.img} className="img-fluid recipe-product-img" />
+      <div>
+        <span className="d-block text-center Roboto text-truncate m-0 p-1">
+          {props.name}
+        </span>
       </div>
     </div>
   );

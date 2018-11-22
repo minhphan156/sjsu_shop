@@ -42,7 +42,6 @@ a:active {
   text-decoration: none !important;
 }
 
-
 .card-form {
   opacity: 0.9;
 }
@@ -341,6 +340,12 @@ a:active {
 
 .create-recipe-ingredient-box {
   width: 100%;
+}
+
+.recipe-product-img {
+  height: 20vh;
+  width: 100%;
+  object-fit: contain;
 }
 
 /* Review Recipe Page */

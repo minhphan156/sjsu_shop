@@ -99,9 +99,10 @@ export const addRecipe = (recipeData, history) => dispatch => {
 };
 
 // Get Recipe Product Query
-export const getRecipeProductQuery = criteria => dispatch => {
+export const getRecipeProductQuery = newQuery => dispatch => {
+  dispatch(setRecipeLoading);
   axios
-    .get("/api/product/search", { params: criteria })
+    .get("/api/product/search/", { params: newQuery })
     .then(res => {
       dispatch({
         type: GET_RECIPE_QUERY,
