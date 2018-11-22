@@ -13,6 +13,8 @@ import { clearCurrentProfile } from "./actions/profileActions";
 import NavBar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
+import About from "./components/layout/About";
+import DevTeam from "./components/layout/DevTeam";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Search from "./components/layout/Search";
@@ -67,6 +69,9 @@ class App extends Component {
           <div className="App">
             <NavBar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/DevTeam" component={DevTeam} />
+
             <Route exact path="/Search" component={Search} />
 
             <Route exact path="/Snack" component={CategoryShowProducts} />
@@ -128,7 +133,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute
-                  exact path="/recipe/create" component={CreateRecipe}
+                  exact
+                  path="/recipe/create"
+                  component={CreateRecipe}
                 />
               </Switch>
             </div>
