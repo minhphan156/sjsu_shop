@@ -80,7 +80,9 @@ router.post(
             .save()
             .then(profileRecipe => res.json(profileRecipe))
             .catch(err => {
-              res.status(500).json({ error: "Recipe failed to save" });
+              res
+                .status(500)
+                .json({ error: "oldTitle Recipe failed to save " });
             });
         }
         Recipe.findOne({ title: req.body.oldTitle }).then(recipe => {
@@ -97,7 +99,7 @@ router.post(
               .save()
               .then(recipe => res.json(recipe))
               .catch(err => {
-                res.status(500).json({ error: "Recipe failed to save" });
+                res.status(500).json({ error: "New Recipe failed to save" });
               });
           }
         });
