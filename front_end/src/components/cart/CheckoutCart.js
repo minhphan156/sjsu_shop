@@ -90,13 +90,11 @@ class CheckoutCart extends Component {
       city: profileReducer.address.city,
       zip: profileReducer.address.zip,
       homeState: profileReducer.address.homeState,
-      ccNumber: profileReducer.creditCard.ccNumber,
-      ccExp: profileReducer.creditCard.ccExp,
-      ccCvv: profileReducer.creditCard.ccCvv,
       history: history
     };
 
     this.props.createProfile(profileData, this.props.history);
+    this.props.cart.shoppingCart = [];
   }
   render() {
     const { profile, loading } = this.props.profile;
@@ -116,7 +114,7 @@ class CheckoutCart extends Component {
 
     var submitButton =
       Object.keys(profile).length > 0
-        ? { redirect: "/receipt", description: "Go to Payment" }
+        ? { redirect: "/payment", description: "Go to Payment" }
         : { redirect: "/delivery", description: "Add Delivery Information" };
 
     if (cart.length) {
@@ -244,7 +242,6 @@ class CheckoutCart extends Component {
     );
   }
 }
-
 CheckoutCart.PropTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
